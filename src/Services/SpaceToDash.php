@@ -7,17 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SpaceToDashRepository")
  */
-class SpaceToDash
+class SpaceToDash implements Transform
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    public function getId(): ?int
+    public function Transform(string $string) : string
     {
-        return $this->id;
+        $string = str_replace(" ", "-", $string);
     }
 }

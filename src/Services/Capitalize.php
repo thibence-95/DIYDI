@@ -9,20 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Capitalize implements Transform
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
-    public function getId(): ?int
+    public function Transform(string $string): string
     {
-        return $this->id;
-    }
-
-    public function transform(string $string): string
-    {
-        // TODO: Implement transform() method.
+        return preg_replace_callback('/\w.?/', function($m) {return ucfirst($m[0]);}, $string);
     }
 }
